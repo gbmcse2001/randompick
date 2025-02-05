@@ -58,4 +58,4 @@ def reset():
     return redirect(url_for("index"))  # Redirect back to the homepage
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)

@@ -35,6 +35,19 @@
             font-weight: bold;
             border: 1px solid #ddd;
         }
+        .random-student {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #28a745;
+            margin-bottom: 20px;
+            animation: flash 1s infinite alternate;
+        }
+
+        @keyframes flash {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
     </style>
 </head>
 <body class="container mt-5">
@@ -57,6 +70,13 @@
     {% endif %}
     {% endwith %}
 
+    {% if selected_student %}
+    <h3 class="mt-4">🎉 Selected Student: </h3>
+    <div id="randomStudent" class="random-student">
+         <strong>{{ selected_student }}</strong>
+    </div>
+    {% endif %}
+
     {% if students %}
         <h3 class="mt-4">Student List</h3>
         <div class="student-grid">
@@ -69,10 +89,6 @@
         <form action="/pick" method="post">
             <button type="submit" class="btn btn-success mt-3">Pick Random Student</button>
         </form>
-
-        {% if selected_student %}
-            <h3 class="mt-4">🎉 Selected Student: <strong>{{ selected_student }}</strong></h3>
-        {% endif %}
 
         <!-- Reset Button -->
          <form action="/reset" method="post">
